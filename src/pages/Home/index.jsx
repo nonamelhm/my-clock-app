@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { debounce } from 'lodash';
+import React, {useState, Suspense, lazy} from 'react';
+import {debounce} from 'lodash';
 import home from './index.module.css'; //引入的时候给一个名称
-import Clock from '@/components/Clock'; // 导入新的时钟组件
+
+const Clock = lazy(() => import('@/components/Clock')); // 使用React.lazy进行路由懒加载
 
 const Home = () => {
     const [currentTime, setCurrentTime] = useState(new Date());
@@ -26,43 +27,43 @@ const Home = () => {
         setLoading(true);
         setTimeout(() => {
             // 添加一个新的时钟组件
-            setClocks(prevClocks => [...prevClocks, <Clock key={prevClocks.length} />]);
+            setClocks(prevClocks => [...prevClocks, <Clock key={prevClocks.length}/>]);
             // 完成时取消loading
             setLoading(false);
         }, 500);
     }, 500);
 
-    return (
-        <div id={home.box}>
-            <table>
-                <tr>
-                    <td>
-                        <h2>Aria 赖慧梅 Front-end engineer</h2>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <h2>{currentTime.toLocaleTimeString()}</h2>
-                    </td>
-                    <td>
-                        {/* 根据isRefreshing状态显示不同的按钮文本 */}
-                        <button className={home.button}
-                                onClick={refreshTime}>{isRefreshing ? "更新中Loading..." : "Refresh Time"}</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <button className={home.button} onClick={createClock}>
-                            {loading ? "加载中Loading..." : "Create Another Clock"}
-                        </button>
-                        {clocks.map((clock, index) => (
-                            <div key={index}>{clock}</div>
-                        ))}
-                    </td>
-                </tr>
-            </table>
-        </div>
-    );
+    return (<div id={home.box}>
+        <table>
+            <tbody>
+            <tr>
+                <td>
+                    <h2>Aria 赖慧梅 Front-end engineer</h2>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h2>{currentTime.toLocaleTimeString()}</h2>
+                </td>
+                <td>
+                    {/* 根据isRefreshing状态显示不同的按钮文本 */}
+                    <button className={home.button}
+                            onClick={refreshTime}>{isRefreshing ? "更新中Loading..." : "Refresh Time"}</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button className={home.button} onClick={createClock}>
+                        {loading ? "加载中Loading..." : "Create Another Clock"}
+                    </button>
+                    <Suspense fallback={<div>Loading...</div>}>
+                        {clocks.map((clock, index) => (<div key={index}>{clock}</div>))}
+                    </Suspense>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>);
 };
 
 export default Home;
