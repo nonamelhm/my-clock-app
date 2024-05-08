@@ -5,8 +5,8 @@
 
 - [Environment开发环境](#Environment开发环境)
 - [Operating运行说明](#Operating运行说明)
-- [Branch and Packing仓库分支及打包说明](#Branch and Packing仓库分支及打包说明)
-- [Branch instructions分支配置说明](#Branch instructions分支配置说明)
+- [Packing仓库分支及打包说明](#Packing仓库分支及打包说明)
+- [Branch分支配置说明](#Branch分支配置说明)
 - [Plan功能计划](#Plan功能计划)
 
 ## Environment开发环境
@@ -29,7 +29,7 @@ Open the terminal in the root directory of the current project and enter the com
 npm run start:dev
 ```
 
-## Branch and Packing仓库分支及打包说明
+## Packing仓库分支及打包说明
 
 - dev：开发分支Development branch
 - alpha：测试服——预发布分支Test service - pre-release branch
@@ -39,7 +39,7 @@ npm run start:dev
 | dev    | .env.dev     | `npm run start:dev` |                         | 开发分支Development branch              |
 | alpha  | .env.alpha   |                     | `npm run build:alpha`   | 测试服环境部署分支Test service environment deployment branch |
 
-## Branch instructions分支配置说明
+## Branch分支配置说明
 
 **分支配置目的Branch configuration purpose**
 
