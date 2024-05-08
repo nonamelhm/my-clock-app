@@ -1,0 +1,13 @@
+#box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .button {
+        width: 160px;
+        height: 40px;
+        cursor: pointer;
+    }
+}
+
