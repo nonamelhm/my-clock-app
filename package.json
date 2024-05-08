@@ -19,7 +19,7 @@
     "start": "craco start --env=dev",
     "start:dev": "craco start --env=dev",
     "start:alpha": "craco start --env=alpha",
-    "build": "craco build",
+    "build:alpha": "craco build --env=alpha",
     "test": "craco test",
     "eject": "craco eject"
   },
