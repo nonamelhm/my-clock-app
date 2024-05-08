@@ -20,6 +20,8 @@
 ### 1、安装依赖Installation dependency
 
 在当前项目根目录下打开终端，输入命令`npm install`安装第三方库
+Open the terminal in the root directory of the current project and enter the command`npm install`to install the third-party library
+
 
 ### 2、运行项目Operational item
 
