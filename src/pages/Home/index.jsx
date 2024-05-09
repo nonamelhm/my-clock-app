@@ -1,8 +1,8 @@
 import React, {useState, Suspense, lazy} from 'react';
 import {debounce} from 'lodash';
-import home from './index.module.css'; //引入的时候给一个名称
-
-const Clock = lazy(() => import('@/components/Clock')); // 使用React.lazy进行路由懒加载
+import home from './index.module.css';
+// Lazy route lazy loading using React.lazy
+const Clock = lazy(() => import('@/components/Clock'));
 
 const Home = () => {
     const [currentTime, setCurrentTime] = useState(new Date());
@@ -10,25 +10,25 @@ const Home = () => {
     const [loading, setLoading] = useState(false); // loading状态
     const [isRefreshing, setIsRefreshing] = useState(false); // 是否正在刷新中
 
-    // 点击刷新时间 使用debounce进行防抖优化
+    // Click Refresh time to use debounce for anti-shake optimization
     const refreshTime = debounce(() => {
-        // 设置为正在刷新中
+        // Set to refreshing
         setIsRefreshing(true);
         setCurrentTime(new Date());
         setTimeout(() => {
-            // 刷新完成后取消正在刷新中状态
+            // After refreshing is complete, cancel the refreshing state
             setIsRefreshing(false);
         }, 500);
     }, 500);
 
-    // 创建时钟，使用debounce进行防抖优化
+    // Create the clock and use debounce for anti-shake optimization
     const createClock = debounce(() => {
-        // 开始加载时显示loading
+        // Displays loading when loading begins
         setLoading(true);
         setTimeout(() => {
-            // 添加一个新的时钟组件
+            // Add a new clock component
             setClocks(prevClocks => [...prevClocks, <Clock key={prevClocks.length}/>]);
-            // 完成时取消loading
+            // Cancel loading when finished
             setLoading(false);
         }, 500);
     }, 500);
@@ -38,7 +38,7 @@ const Home = () => {
             <tbody>
             <tr>
                 <td>
-                    <h2>Aria 赖慧梅 Front-end engineer</h2>
+                    <h2>Aria Lai —— Front-end engineer</h2>
                 </td>
             </tr>
             <tr>
@@ -46,15 +46,15 @@ const Home = () => {
                     <h2>{currentTime.toLocaleTimeString()}</h2>
                 </td>
                 <td>
-                    {/* 根据isRefreshing状态显示不同的按钮文本 */}
+                    {/* Display a different button text depending on the isRefreshing status */}
                     <button className={home.button}
-                            onClick={refreshTime}>{isRefreshing ? "更新中Loading..." : "Refresh Time"}</button>
+                            onClick={refreshTime}>{isRefreshing ? "Loading..." : "Refresh Time"}</button>
                 </td>
             </tr>
             <tr>
                 <td>
                     <button className={home.button} onClick={createClock}>
-                        {loading ? "加载中Loading..." : "Create Another Clock"}
+                        {loading ? "Loading..." : "Create Another Clock"}
                     </button>
                     <Suspense fallback={<div>Loading...</div>}>
                         {clocks.map((clock, index) => (<div key={index}>{clock}</div>))}
