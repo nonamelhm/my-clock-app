@@ -2,58 +2,56 @@
 Github: https://github.com/nonamelhm/my-clock-app.git
 
 > The project is a clock application that allows users to create and manage multiple clocks.
-> 该项目是一个时钟应用程序，允许用户创建和管理多个时钟。
 
-- [Environment开发环境](#Environment开发环境)
-- [Operating运行说明](#Operating运行说明)
-- [Packing仓库分支及打包说明](#Packing仓库分支及打包说明)
-- [Branch分支配置说明](#Branch分支配置说明)
-- [Plan功能计划](#Plan功能计划)
+- [Development environment](#Development environment)
+- [Operating instruction](#Operating instruction)
+- [Warehouse and packing instructions](#Warehouse and packing instructions)
+- [Branch configuration description](#Branch configuration description)
+- [Functional planning](#Functional planning)
 
-## Environment开发环境
+## Development environment
 
-- Coding tool编码工具：WebStorm 2023.1.4
+- Coding tool：WebStorm 2023.1.4
 - node：21.7.3
 - React
 
-## Operating运行说明
+## Operating instruction
 
-### 1、安装依赖Installation dependency
+### 1、Installation dependency
 
-在当前项目根目录下打开终端，输入命令`npm install`安装第三方库
 Open the terminal in the root directory of the current project and enter the command`npm install`to install the third-party library
 
 
-### 2、运行项目Operational item
+### 2、Operational item
 
 ```shell
 npm run start:dev
 ```
 
-## Packing仓库分支及打包说明
+## Warehouse and packing instructions
 
-- dev：开发分支Development branch
-- alpha：测试服——预发布分支Test service - pre-release branch
+- dev：Development branch
+- alpha：Test service - pre-release branch
 
-| 名称name | 环境配置Environment configuration         | 本地测试命令Local test command              | 打包命令Pack command                    | 备注remark               |
-|--------|:-------------|---------------------|-------------------------|-------------------|
-| dev    | .env.dev     | `npm run start:dev` |                         | 开发分支Development branch              |
-| alpha  | .env.alpha   |                     | `npm run build:alpha`   | 测试服环境部署分支Test service environment deployment branch |
+| name  | Environment configuration         | Local test command              | Pack command                    | remark               |
+|-------|:----------------------------------|---------------------|-------------------------|-------------------|
+| dev   | .env.dev                          | `npm run start:dev` |                         | Development branch            |
+| alpha | .env.alpha                        |                     | `npm run build:alpha`   | Test service environment deployment branch |
 
-## Branch分支配置说明
+## Branch configuration description
 
-**分支配置目的Branch configuration purpose**
+**Branch configuration purpose**
 
-- 为了实现运行端口区别In order to achieve the difference between running ports
-- 为了实现In order to...
+- In order to achieve the difference between running ports
+- In order to...
 
 ```
-REACT_APP_ENV= development   //环境environment
-REACT_APP_PORT= 8080   //默认运行端口Default operating port
+REACT_APP_ENV= development   //environment
+REACT_APP_PORT= 8080   //Default operating port
 ```
 
 
-## Plan功能计划
+## Functional planning
 
 - [ ] 
 
