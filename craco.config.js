@@ -1,31 +1,31 @@
 const path = require("path");
 const dotenv = require('dotenv');
 
-// 解析命令行参数获取环境变量标识
+// Parse command line arguments to get environment variable identification
 const envFlagIndex = process.argv.findIndex(arg => arg.startsWith('--env='));
 const envFlag = envFlagIndex !== -1 ? process.argv[envFlagIndex].split('=')[1] : 'dev';
 const envFileName = `.env.${envFlag}`;
 
-// 从对应的 .env 文件中加载环境变量
+//Load environment variables from the corresponding.env file
 dotenv.config({ path: path.resolve(__dirname, envFileName) });
 
 module.exports = {
     webpack: {
         alias: {
-            //配置从@指定从src寻找文件
+            // Configure from @ to specify to find files from src
             "@": path.resolve(__dirname, "src")
         }
     },
     devServer: {
-        // 设置 devServer 运行的端口为 .env 文件中的 PORT 变量值
+        // Set the PORT on which devServer runs to the value of the port variable in the.env file
         port: process.env.REACT_APP_PORT || 8080,
         proxy: {
-            // 设置代理 env文件中定义
+            // Set proxy defined in the env file
             '/api': {
-                // 设置代理目标 env文件中定义
+                // Set proxy target defined in the env file
                 target: '',
                 changeOrigin: true,
-                // 可选的，重写路径，例如将 /api 替换为空字符串
+                // Optionally, rewrite the path, such as replacing /api with an empty string
                 pathRewrite: { '^/api': '' }
             }
         }
