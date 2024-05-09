@@ -6,9 +6,12 @@ const Clock = lazy(() => import('@/components/Clock'));
 
 const Home = () => {
     const [currentTime, setCurrentTime] = useState(new Date());
-    const [clocks, setClocks] = useState([]); // 用数组存储时钟组件
-    const [loading, setLoading] = useState(false); // loading状态
-    const [isRefreshing, setIsRefreshing] = useState(false); // 是否正在刷新中
+    // Use arrays to store clock components
+    const [clocks, setClocks] = useState([]);
+    // loading state
+    const [loading, setLoading] = useState(false);
+    // Whether it is being refreshed
+    const [isRefreshing, setIsRefreshing] = useState(false);
 
     // Click Refresh time to use debounce for anti-shake optimization
     const refreshTime = debounce(() => {
